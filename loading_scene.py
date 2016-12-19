@@ -64,7 +64,7 @@ class LoadingScene(Scene):
         #print 'cool1'
             
         
-        time.sleep(1)
+        time.sleep(0.5)
         self.background.remove_from_parent()
         self.background = SpriteNode('./assets/sprites/loading_two.JPG', 
                                      parent = self, 
@@ -72,7 +72,7 @@ class LoadingScene(Scene):
                                      position = self.size/2)
         #print 'cool2'
             
-        time.sleep(1)
+        time.sleep(0.5)
         self.background.remove_from_parent()
         self.background = SpriteNode('./assets/sprites/loading_three.JPG', 
                                      parent = self, 
@@ -80,13 +80,13 @@ class LoadingScene(Scene):
                                      position = self.size/2)
         #print 'cool3'
             
-        time.sleep(1)
+        time.sleep(0.5)
         self.background.remove_from_parent()
         self.background = SpriteNode('./assets/sprites/loading_four.JPG', 
                                      parent = self, 
                                      size = self.size,
                                      position = self.size/2)
         #print 'cool4'
-        time.sleep(1)
+        time.sleep(0.5)
         #self.animation_finished = True
         self.present_modal_scene(MainMenuScene())
