@@ -11,14 +11,16 @@ class SettingsScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
+        self.size_of_screen_x = self.size.x
+        self.size_of_screen_y = self.size.y
+        
         # add MT blue background color
         self.background = SpriteNode('./assets/sprites/settings.JPG', 
                                  parent = self, 
                                  size = self.size,
                                  position = self.size/2)
-        back_button_position = self.size/2
-        back_button_position.x = back_button_position.x - 420
-        back_button_position.y = back_button_position.y + 285
+                                 
+        back_button_position = Vector2(self.size_of_screen_x * 0.1, self.size_of_screen_y * 0.87)
         self.back_button = SpriteNode('assets/sprites/back_button.PNG',
                                        parent = self,
                                        position = back_button_position,
@@ -31,6 +33,11 @@ class SettingsScene(Scene):
                                               parent = self,
                                               position = credits_button_position,
                                               scale = 0.2)
+                                              
+        self.credits_label = LabelNode(text = 'test',
+                                       font = ('American Typewriter', 50),
+                                       parent = self,
+                                       position = self.size / 2)
     
     def update(self):
         # this method is called, hopefully, 60 times a second
