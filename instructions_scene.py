@@ -12,15 +12,16 @@ class InstructionsScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
+        self.size_of_screen_x = self.size.x
+        self.size_of_screen_y = self.size.y
+        
         # add MT blue background color
         self.background = SpriteNode('./assets/sprites/instructions.JPG', 
                                  parent = self, 
                                  size = self.size,
                                  position = self.size/2)
                                  
-        back_button_position = self.size/2
-        back_button_position.x = back_button_position.x - 420
-        back_button_position.y = back_button_position.y + 285
+        back_button_position = Vector2(self.size_of_screen_x * 0.1, self.size_of_screen_y * 0.87)
         self.back_button = SpriteNode('assets/sprites/back_button.PNG',
                                        parent = self,
                                        position = back_button_position,

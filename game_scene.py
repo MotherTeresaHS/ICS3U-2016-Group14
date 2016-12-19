@@ -12,10 +12,10 @@ class GameScene(Scene):
         # this method is called, when user moves to this scene
         
         # add MT blue background color
-        self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'white', 
-                                     parent = self, 
-                                     size = self.size)
+        self.background = SpriteNode('./assets/sprites/game.PNG', 
+                                 parent = self, 
+                                 size = self.size,
+                                 position = self.size/2)
     
     def update(self):
         # this method is called, hopefully, 60 times a second
