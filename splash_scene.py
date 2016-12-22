@@ -8,7 +8,7 @@ from scene import *
 import ui
 import time
 
-from loading_scene import *
+from main_menu_scene import *
 
 
 class SplashScene(Scene):
@@ -30,7 +30,7 @@ class SplashScene(Scene):
         
         # after 2 seconds, move to main menu scene
         if not self.presented_scene and time.time() - self.start_time > 2:
-            self.present_modal_scene(LoadingScene())
+            self.present_modal_scene(MainMenuScene())
     
     def touch_began(self, touch):
         # this method is called, when user touches the screen

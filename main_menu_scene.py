@@ -8,6 +8,7 @@ import ui
 from game_scene import *
 from settings_scene import *
 from instructions_scene import *
+import time
 
 class MainMenuScene(Scene):
     def setup(self):
@@ -42,6 +43,8 @@ class MainMenuScene(Scene):
                                               position = instructions_button_position,
                                               scale = 0.2)
                                        
+                                       
+        time.sleep(0.1)
         #self.score_label = LabelNode(text = 'High Score: 0',
                                      #font = ('Helvetica', 20),
                                      #parent = self,
