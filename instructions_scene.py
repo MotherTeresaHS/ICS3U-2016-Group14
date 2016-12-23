@@ -22,7 +22,7 @@ class InstructionsScene(Scene):
                                  position = self.size/2)
                                  
         back_button_position = Vector2(self.size_of_screen_x * 0.1, self.size_of_screen_y * 0.87)
-        self.back_button = SpriteNode('assets/sprites/back_button.PNG',
+        self.back_button = SpriteNode('./assets/sprites/back_button.PNG',
                                        parent = self,
                                        position = back_button_position,
                                        scale = 1.5)
@@ -44,7 +44,7 @@ class InstructionsScene(Scene):
         # this method is called, when user releases a finger from the screen
         if self.back_button.frame.contains_point(touch.location):
             self.back_button.scale = 1.5
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.dismiss_modal_scene()
     
     def did_change_size(self):

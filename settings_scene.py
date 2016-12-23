@@ -59,7 +59,7 @@ class SettingsScene(Scene):
                                      position = sound_on_label_postion)
                                      
         sound_off_label_postion = Vector2(self.size_of_screen_x/1.65, self.size_of_screen_y/2.7)
-        self.sound_off_label = LabelNode(text = 'Sound ON',
+        self.sound_off_label = LabelNode(text = 'Sound OFF',
                                      font = ('Helvetica', 30),
                                      parent = self,
                                      color = 'black',
@@ -92,19 +92,19 @@ class SettingsScene(Scene):
         # this method is called, when user releases a finger from the screen
         if self.back_button.frame.contains_point(touch.location):
             self.back_button.scale = 1.5
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.dismiss_modal_scene()
             
         if self.credits_button.frame.contains_point(touch.location):
             self.credits_button.scale = 0.2
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.present_modal_scene(CreditsScene())
             
         if self.volume_on_button.frame.contains_point(touch.location):
             self.volume_on_button.scale = 2
             #sound.play_effect('drums:Drums_02')
             sound.set_volume(1)
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             
         if self.volume_off_button.frame.contains_point(touch.location):
             self.volume_off_button.scale = 2

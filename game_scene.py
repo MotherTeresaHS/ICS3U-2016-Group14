@@ -92,7 +92,7 @@ class GameScene(Scene):
                                         position = top_border_postion,
                                         size = (self.size_of_screen_x*2, self.size_of_screen_y/10))
                                         
-        score_label_position = Vector2(150, self.size_of_screen_y - 70)
+        score_label_position = Vector2(self.size_of_screen_x/6, self.size_of_screen_y*0.85)
         self.score_label = LabelNode(text = 'Score: 0',
                                      font = ('Helvetica', 50),
                                      parent = self,
@@ -151,7 +151,7 @@ class GameScene(Scene):
         # this method is called, when user touches the screen
         if self.play_button.frame.contains_point(touch.location):
             self.start_label.alpha = 0
-            sound.play_effect('game:Woosh_1')
+            sound.play_effect('./assets/Sounds/Woosh_1.caf')
             self.character.run_action(Action.sequence(Action.move_by(self.left_or_right,100,1.5),
                                       Action.move_by(self.left_or_right_left,-2000,12)))
                                       

@@ -82,17 +82,17 @@ class MainMenuScene(Scene):
         # this method is called, when user releases a finger from the screen
         if self.play_button.frame.contains_point(touch.location):
             self.play_button.scale = 0.6
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.present_modal_scene(GameScene())
             
         if self.settings_button.frame.contains_point(touch.location):
             self.settings_button.scale = 1.7
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.present_modal_scene(SettingsScene())
             
         if self.instructions_button.frame.contains_point(touch.location):
             self.instructions_button.scale = 0.2
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.present_modal_scene(InstructionsScene())
     
     def did_change_size(self):
