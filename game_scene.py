@@ -119,7 +119,7 @@ class GameScene(Scene):
         #print self.score
         if self.score_bottom.frame.contains_rect(self.character.frame) and self.score_done == False:
             self.score = self.score + 1
-            sound.play_effect('arcade:Coin_4')
+            sound.play_effect('./assets/Sounds/Coin_4.caf')
             self.score_label.text = 'Score: ' + str(self.score)
             self.score_done = True
         
