@@ -44,7 +44,7 @@ class CreditsScene(Scene):
         # this method is called, when user releases a finger from the screen
         if self.back_button.frame.contains_point(touch.location):
             self.back_button.scale = 1.5
-            sound.play_effect('drums:Drums_02')
+            sound.play_effect('./assets/Sounds/Drums_02.caf')
             self.dismiss_modal_scene()
     
     def did_change_size(self):
