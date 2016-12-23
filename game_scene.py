@@ -165,7 +165,7 @@ class GameScene(Scene):
     
     def touch_ended(self, touch):
         # this method is called, when user releases a finger from the screen
-        if self.menu_button.frame.contains_point(touch.location):
+        if self.menu_button.frame.contains_point(touch.location) and self.dead == True:
             self.menu_button.scale = 0.5
             self.dismiss_modal_scene()
     

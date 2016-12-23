@@ -16,7 +16,7 @@ class InstructionsScene(Scene):
         self.size_of_screen_y = self.size.y
         
         # add MT blue background color
-        self.background = SpriteNode('./assets/sprites/instructions.JPG', 
+        self.background = SpriteNode(color = '#2be3ff',
                                  parent = self, 
                                  size = self.size,
                                  position = self.size/2)
@@ -26,6 +26,13 @@ class InstructionsScene(Scene):
                                        parent = self,
                                        position = back_button_position,
                                        scale = 1.5)
+                                       
+        self.instructions_label = LabelNode(text = '- Tap to start\n- Keep tapping to make the spaceship fly\n- Get the highest score you can\n- Have fun!',
+                                     font = ('Helvetica', 50),
+                                     parent = self,
+                                     color = 'black',
+                                     position = self.size/2)
+        
     
     def update(self):
         # this method is called, hopefully, 60 times a second
