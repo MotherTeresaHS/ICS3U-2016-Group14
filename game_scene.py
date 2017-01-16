@@ -7,6 +7,8 @@ from scene import *
 import ui
 import time
 import sound
+import json
+
 
 #pillar_x = 100
 #pillar_y = 400
@@ -17,6 +19,7 @@ class GameScene(Scene):
         
         self.size_of_screen_x = self.size.x
         self.size_of_screen_y = self.size.y
+        self.high_score = 0
         
         
         # add MT blue background color
@@ -105,6 +108,15 @@ class GameScene(Scene):
                                      color = 'black',
                                      position = self.size/2)
                                      
+                                     
+        highscore_label_position = Vector2(self.size_of_screen_x/2, self.size_of_screen_y/2.4)
+        self.highscore_label = LabelNode(text = 'Highscore: ' + str(self.high_score),
+                                     font = ('Helvetica', 50),
+                                     parent = self,
+                                     color = 'black',
+                                     position = highscore_label_position,
+                                     alpha = 0)
+                                     
         #self.fly_bottom = False
         self.current_y_position = self.size_of_screen_y * 0.5
         self.left_or_right = (self.size_of_screen_x * 0.07)*1
@@ -113,6 +125,7 @@ class GameScene(Scene):
         self.menu_button_created = False
         self.score = 0
         self.score_done = False
+        
     
     def update(self):
         # this method is called, hopefully, 60 times a second
@@ -142,14 +155,26 @@ class GameScene(Scene):
             self.dead = True
             
         if self.dead == True:
+            #sound.set_volume(0)
+            
             self.menu_button.alpha = 1
+            self.highscore_label.alpha = 1
             self.character.remove_from_parent()
             self.menu_button_created = True
+            high_score_file = open('./high_score.txt', 'r+')
+            high_scores = json.load(high_score_file)
+            high_scores.append(self.score)
+            self.high_score = max(high_scores)
+            #print self.high_score
+            high_score_file.seek(0)
+            json.dump(high_scores, high_score_file)
+            high_score_file.close()
+            self.highscore_label.text = 'Highscore: ' + str(self.high_score)
 
     
     def touch_began(self, touch):
         # this method is called, when user touches the screen
-        if self.play_button.frame.contains_point(touch.location):
+        if self.play_button.frame.contains_point(touch.location) and self.dead == False:
             self.start_label.alpha = 0
             sound.play_effect('./assets/Sounds/Woosh_1.caf')
             self.character.run_action(Action.sequence(Action.move_by(self.left_or_right,100,1.5),
@@ -166,6 +191,7 @@ class GameScene(Scene):
     def touch_ended(self, touch):
         # this method is called, when user releases a finger from the screen
         if self.menu_button.frame.contains_point(touch.location) and self.dead == True:
+            #sound.set_volume(1)
             self.menu_button.scale = 0.5
             self.dismiss_modal_scene()
     
@@ -183,4 +209,3 @@ class GameScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
-        
